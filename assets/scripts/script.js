@@ -3,36 +3,51 @@ const display1 = document.querySelector('#normalizedtext')
 const display2 = document.querySelector('#chunkmsgs')
 const display3 = document.querySelector('#secondrectangle')
 const encodeBtn = document.querySelector('#encoder')
-let message = inputBox.value
-
-function secretMsg(){
-    let normalizedInput = message.replace(/[^\w]/g, '').toLowerCase()
-    let stringLength = normalizedInput.length
-    let columns = Math.ceil(Math.sqrt(stringLength))
-    //let normalizedText = message.replace(/[^\w]/g, '').toLowerCase()
-
-    let encodedMsg = ''
-    let encode = ''
-    if (message === '') {
-        alert(`please input a message`)
-    } else{
-  if (stringLength < 50) {
-    alert('Must input at least 50 characters')
-  } else {
-    for (let i = 0; i < columns; i++) {
-      for (let j = i; j < stringLength; j += columns) {
-        encodedMsg += normalizedInput[j]
-        encode += normalizedInput[j]
-      }
-      encodedMsg += '\n'
-    }
-    display1.innerHTML = `${normalizedInput}`
-    display2.innerHTML = `${encodedMsg}`
-    display3.innerHTML = `${encode}`
-}
-} 
-}
+// let message = inputBox.value
 
 encodeBtn.addEventListener('click', function () {
-    secretMsg()
+  secretMessage()
 })
+
+function secretMessage () {
+  const string = inputBox.value
+  const normalizedText = string.replace(/[^\w]/g, '').toLowerCase()
+  const stringLength = normalizedText.length
+  const cols = Math.ceil(Math.sqrt(stringLength))
+  console.log(` hey ${cols}`)
+
+  let encodeMessage = ''
+  let encode = ''
+  if (string === '') {
+    console.log('Please you must input characters')
+  } else {
+    if (stringLength < 50) {
+      console.log('Must input at least 50 characters')
+    } else {
+      for (let i = 0; i < cols; i++) {
+        for (let j = i; j < stringLength; j += cols) {
+          encodeMessage += normalizedText[j]
+          encode = encodeMessage
+        }
+        encodeMessage += '\n'
+      }
+
+      display1.innerHTML = `${normalizedText}`
+      display1.style.background = 'blue'
+      display1.style.padding = '5px'
+      display1.style.margin = '5px auto'
+      display2.style.margin = '5px auto'
+      display3.style.margin = '5px auto'
+      display2.style.padding = '5px'
+      display3.style.padding = '5px'
+      display2.style.background = 'red'
+      display3.style.background = 'green'
+
+      display2.innerHTML = `${encodeMessage} `
+      display3.innerHTML = `${encode}`
+    }
+  }
+}
+
+// let string = 'If man was meant to stay on the ground, god would have given us roots.'
+// console.log(secretMessage(string))
