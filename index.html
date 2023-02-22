@@ -8,6 +8,22 @@
     <title>Secret Message</title>
 </head>
 <body>
+    <div id="pagecontainer">
+        <div class="input">
+            <label for="msg" class="message">Input Message Here</label>
+            <input type="text" id="message" placeholder="write message here">
+        </div>
+        <button id="encoder">Encode</button>
+        <div class="displays">
+            <p>Normalized Text:</p>
+            <div class="norm" id="normalizedtext"></div>
+            <p>Encoded Message In Chunks:</p>
+            <div class="chunk" id="chunkmsgs"></div>
+            <p>Second Rectangle:</p>
+            <div class="rec2" id="secondrectangle"></div>
+        </div>
+
+    </div>
     
 
     <script src="assets/scripts/script.js"></script>
